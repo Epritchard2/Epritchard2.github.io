@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Game Title Media — screenshots, trailers, and art from the gothic fantasy dark RPG universe.">
+  <title>Media — Game Title</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* Media gallery styles */
+    .media-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--color-border-dim);
+      padding-bottom: 0;
+    }
+    .media-tab {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-dim);
+      padding: 0.75em 1.4em;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition);
+      min-height: 46px;
+    }
+    .media-tab:hover { color: var(--color-gold-light); }
+    .media-tab.active {
+      color: var(--color-gold-light);
+      border-bottom-color: var(--color-gold);
+    }
+    .media-panel { display: none; }
+    .media-panel.active { display: block; }
+
+    .media-masonry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .media-tile {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: border-color var(--transition);
+    }
+    .media-tile:hover { border-color: var(--color-border); }
+    .media-tile:hover .media-tile-overlay { opacity: 1; }
+    .media-tile--wide {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+    .media-tile--tall {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+    .media-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .media-tile:hover img { transform: scale(1.03); }
+    .media-tile-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 100%;
+      color: var(--color-text-dim);
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 1rem;
+      min-height: 120px;
+    }
+    .media-tile-placeholder span { font-size: 1.6rem; color: var(--color-gold-dim); }
+    .media-tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(7,6,11,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .media-tile-overlay span {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold-light);
+      border: 1px solid var(--color-gold-dim);
+      padding: 0.5em 1.2em;
+      border-radius: var(--radius);
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+    .video-tile {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      padding: 0;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-tile-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      height: 100%;
+      padding: 2rem;
+      text-align: center;
+    }
+    .play-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid var(--color-gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--color-gold);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .play-btn:hover {
+      background: rgba(201,168,76,0.28);
+      border-color: var(--color-gold);
+      transform: scale(1.08);
+    }
+    .video-label {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-dim);
+    }
+    @media (max-width: 900px) {
+      .media-masonry { grid-template-columns: repeat(2, 1fr); }
+      .media-tile--wide { grid-column: span 2; }
+    }
+    @media (max-width: 580px) {
+      .media-masonry { grid-template-columns: 1fr; }
+      .media-tile--wide { grid-column: span 1; }
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Game Title — Return to home">
+        <span class="logo-emblem" aria-hidden="true">⬡</span>
+        <span class="logo-text">Game Title</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="features.html" class="nav-link">Features</a></li>
+          <li><a href="media.html" class="nav-link active">Media</a></li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-controls">
+        <label for="lang-desktop" class="sr-only">Select Language</label>
+        <select id="lang-desktop" class="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+        </select>
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="mobile-controls">
+        <label for="lang-mobile" class="sr-only">Select Language</label>
+        <select id="lang-mobile" class="lang-select">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section class="page-hero" aria-labelledby="media-hero-heading">
+      <div class="page-hero-overlay" aria-hidden="true"></div>
+      <div class="page-hero-inner">
+        <p class="section-tag">Gallery</p>
+        <h1 class="page-hero-title" id="media-hero-heading">Media</h1>
+        <p class="page-hero-sub">Screenshots, trailers, and art from the Dark Realm.</p>
+      </div>
+    </section>
+
+    <section class="section-block" aria-labelledby="gallery-heading">
+      <div class="section-inner">
+        <p class="section-tag">Visual Archive</p>
+        <h2 class="section-title" id="gallery-heading">Gallery</h2>
+        <div class="divider" aria-hidden="true"></div>
+
+        <!-- Tabs -->
+        <div class="media-tabs" role="tablist" aria-label="Media categories">
+          <button class="media-tab active" role="tab" aria-selected="true" aria-controls="panel-screenshots" id="tab-screenshots">Screenshots</button>
+          <button class="media-tab" role="tab" aria-selected="false" aria-controls="panel-videos" id="tab-videos">Videos</button>
+          <button class="media-tab" role="tab" aria-selected="false" aria-controls="panel-art" id="tab-art">Concept Art</button>
+        </div>
+
+        <!-- Screenshots panel -->
+        <div class="media-panel active" id="panel-screenshots" role="tabpanel" aria-labelledby="tab-screenshots">
+          <div class="media-masonry">
+            <div class="media-tile media-tile--wide">
+              <!-- Replace src with your actual screenshot -->
+              <img src="images/screenshot-1.jpg" alt="Game Title — gothic cathedral dungeon interior with glowing runes and torchlight" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Screenshot 01 — Cathedral Interior</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+            <div class="media-tile">
+              <img src="images/screenshot-2.jpg" alt="Game Title — Knight class character in heavy gothic plate armor facing a giant undead boss" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Screenshot 02 — Knight vs Boss</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+            <div class="media-tile">
+              <img src="images/screenshot-3.jpg" alt="Game Title — Shadow-Walker class using stealth abilities in a moonlit graveyard" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Screenshot 03 — Shadow-Walker</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+            <div class="media-tile">
+              <img src="images/screenshot-4.jpg" alt="Game Title — Sorcerer class casting a massive dark magic spell in an open battlefield" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Screenshot 04 — Sorcerer Magic</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+            <div class="media-tile">
+              <img src="images/screenshot-5.jpg" alt="Game Title — haunted forest landscape with mist and decaying trees at dusk" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Screenshot 05 — Haunted Forest</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+            <div class="media-tile">
+              <img src="images/screenshot-6.jpg" alt="Game Title — cursed city skyline at night with gothic spires and crimson moon" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Screenshot 06 — Cursed City</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Videos panel -->
+        <div class="media-panel" id="panel-videos" role="tabpanel" aria-labelledby="tab-videos">
+          <div class="video-grid">
+            <div class="video-tile">
+              <div class="video-tile-inner">
+                <div class="play-btn" role="button" tabindex="0" aria-label="Play Official Announcement Trailer">▶</div>
+                <p class="video-label">Official Announcement Trailer</p>
+              </div>
+            </div>
+            <div class="video-tile">
+              <div class="video-tile-inner">
+                <div class="play-btn" role="button" tabindex="0" aria-label="Play Gameplay Reveal">▶</div>
+                <p class="video-label">Gameplay Reveal — Combat System</p>
+              </div>
+            </div>
+            <div class="video-tile">
+              <div class="video-tile-inner">
+                <div class="play-btn" role="button" tabindex="0" aria-label="Play Developer Diary Episode 1">▶</div>
+                <p class="video-label">Developer Diary — Episode 1</p>
+              </div>
+            </div>
+            <div class="video-tile">
+              <div class="video-tile-inner">
+                <div class="play-btn" role="button" tabindex="0" aria-label="Play Class Spotlight: The Knight">▶</div>
+                <p class="video-label">Class Spotlight — The Knight</p>
+              </div>
+            </div>
+          </div>
+          <p style="margin-top:1.5rem; font-family:var(--font-heading); font-size:0.78rem; letter-spacing:0.1em; color:var(--color-text-dim); text-align:center;">
+            More videos on our <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-gold);" aria-label="YouTube channel — opens in new tab">YouTube channel ↗</a>
+          </p>
+        </div>
+
+        <!-- Concept Art panel -->
+        <div class="media-panel" id="panel-art" role="tabpanel" aria-labelledby="tab-art">
+          <div class="media-masonry">
+            <div class="media-tile">
+              <img src="images/art-1.jpg" alt="Game Title concept art — detailed pencil and ink illustration of the Knight class character design" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Concept Art — Knight Design</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+            <div class="media-tile">
+              <img src="images/art-2.jpg" alt="Game Title concept art — architectural sketches of the cathedral dungeon environment" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Concept Art — Cathedral Sketches</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+            <div class="media-tile">
+              <img src="images/art-3.jpg" alt="Game Title concept art — color study of the cursed city with red moonlight and gothic spires" onerror="this.style.display='none'">
+              <div class="media-tile-placeholder" aria-hidden="true"><span>⬡</span>Concept Art — Cursed City Color Study</div>
+              <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="Game Title home">
+          <span class="logo-emblem" aria-hidden="true">⬡</span>
+          <span class="logo-text">Game Title</span>
+        </a>
+        <p class="footer-tagline">Forge your legend in the dark.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-col">
+          <h4 class="footer-heading">Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow Us</h4>
+          <ul>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
+            <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord ↗</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Game Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Media tabs JS (page-specific, could also live in script.js)
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.media-tab');
+      const panels = document.querySelectorAll('.media-panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+          panels.forEach(p => p.classList.remove('active'));
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected','true');
+          const target = document.getElementById(tab.getAttribute('aria-controls'));
+          if (target) target.classList.add('active');
+        });
+        // Keyboard support
+        tab.addEventListener('keydown', (e) => {
+          let idx = [...tabs].indexOf(tab);
+          if (e.key === 'ArrowRight') { e.preventDefault(); tabs[(idx+1) % tabs.length].click(); tabs[(idx+1) % tabs.length].focus(); }
+          if (e.key === 'ArrowLeft')  { e.preventDefault(); tabs[(idx-1+tabs.length) % tabs.length].click(); tabs[(idx-1+tabs.length) % tabs.length].focus(); }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
