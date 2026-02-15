@@ -286,7 +286,4 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
-// Fix parallax on mobile
-if (/Mobi|Android/i.test(navigator.userAgent)) {
-  document.body.style.backgroundAttachment = 'scroll';
-}
+
