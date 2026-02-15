@@ -3,37 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Game Title</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
-    <h1>My Website</h1>
+    <div class="logo">Header / Logo</div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Media</a></li>
+            <li><a href="#">Community</a></li>
+        </ul>
+    </nav>
+
+    <div class="user-controls">
+        <select aria-label="Language selector">
+            <option>English</option>
+            <option>Spanish</option>
+        </select>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+    </div>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
-
 <main>
-    <section>
-        <h2>Welcome</h2>
-        <p>This is my website built with HTML and CSS.</p>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <h1>Name of Game Here</h1>
+            <p>Main banner content goes here.</p>
+            <button>Learn More</button>
+        </div>
     </section>
 
-    <section>
-        <h2>Image Example</h2>
-        <img src="https://via.placeholder.com/300" alt="Placeholder example image">
+    <section class="about">
+        <h2>About the Game</h2>
+        <p>Scrolling content and more information about the game goes here.</p>
     </section>
+
+    <section class="features">
+        <h2>Game Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Feature One</h3>
+                <p>Description here.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Feature Two</h3>
+                <p>Description here.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Feature Three</h3>
+                <p>Description here.</p>
+            </div>
+        </div>
+    </section>
+
 </main>
 
 <footer>
-    <p>&copy; 2026 My Website</p>
+    <div class="footer-links">
+        <a href="faq.html">FAQ</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+    </div>
+    <p>&copy; 2026 Game Studio</p>
 </footer>
 
 <script src="script.js"></script>
