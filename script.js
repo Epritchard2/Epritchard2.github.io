@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
   revealOnScroll('.stat-list li', 'up');
   revealOnScroll('.news-card', 'up');
   revealOnScroll('.media-item', 'up');
-  revealOnScroll('.faq-item', 'up');
   revealOnScroll('.class-card', 'up');
   revealOnScroll('.social-card', 'up');
 });
