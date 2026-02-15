@@ -1,7 +1,5 @@
 /**
  * Omnæs Dæmones — script.js
- * Handles: header scroll behavior, mobile menu, form validation,
- * scroll reveal animations, language selector sync
  */
 
 console.log("Omnæs Dæmones website loaded successfully!");
@@ -13,12 +11,11 @@ const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
 // ============================================================
-// HEADER — scroll behavior (adds .scrolled class)
+// HEADER — scroll behavior
 // ============================================================
 (function initScrollHeader() {
   const header = $('#site-header');
   if (!header) return;
-
   const onScroll = () => {
     if (window.scrollY > 40) {
       header.classList.add('scrolled');
@@ -26,14 +23,13 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       header.classList.remove('scrolled');
     }
   };
-
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // run on load in case page is pre-scrolled
+  onScroll();
 })();
 
 
 // ============================================================
-// MOBILE MENU — toggle open/close
+// MOBILE MENU
 // ============================================================
 (function initMobileMenu() {
   const btn = $('#mobile-menu-btn');
@@ -46,7 +42,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     btn.setAttribute('aria-label', 'Close navigation menu');
     nav.classList.add('open');
     nav.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // prevent background scroll
+    document.body.style.overflow = 'hidden';
   };
 
   const close = () => {
@@ -59,16 +55,11 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   };
 
   btn.addEventListener('click', () => {
-    const isOpen = btn.classList.contains('open');
-    isOpen ? close() : open();
+    btn.classList.contains('open') ? close() : open();
   });
 
-  // Close on nav link click
-  $$('a', nav).forEach(link => {
-    link.addEventListener('click', close);
-  });
+  $$('a', nav).forEach(link => link.addEventListener('click', close));
 
-  // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && btn.classList.contains('open')) {
       close();
@@ -76,7 +67,6 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     }
   });
 
-  // Close when clicking outside
   document.addEventListener('click', (e) => {
     if (btn.classList.contains('open') &&
         !nav.contains(e.target) &&
@@ -88,189 +78,161 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
 
 // ============================================================
-// LANGUAGE SELECTOR SYNC (desktop <-> mobile)
+// LANGUAGE SELECTOR SYNC
 // ============================================================
 (function initLangSync() {
   const desktop = $('#lang-desktop');
   const mobile  = $('#lang-mobile');
   if (!desktop || !mobile) return;
-
   desktop.addEventListener('change', () => { mobile.value = desktop.value; });
   mobile.addEventListener('change',  () => { desktop.value = mobile.value; });
 })();
 
 
 // ============================================================
-// SCROLL REVEAL — animate elements into view
+// HERO REVEAL
 // ============================================================
-(function initReveal() {
-  const targets = $$('[data-reveal]');
-  if (!targets.length) return;
-
-  const heroLeft  = $('.hero-logo-art');
+(function initHeroReveal() {
   const heroRight = $('.hero-content');
-  if (heroLeft)  setTimeout(() => heroLeft.classList.add('revealed'),  200);
-  if (heroRight) setTimeout(() => heroRight.classList.add('revealed'), 400);
+  if (heroRight) setTimeout(() => heroRight.classList.add('revealed'), 200);
+})();
+
+
+// ============================================================
+// FEATURE CARDS — staggered scroll reveal
+// ============================================================
+(function initFeatureReveal() {
+  const cards = $$('.feature-card');
+  if (!cards.length) return;
+
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(24px)';
+    card.style.transition = 'opacity 0.6s ease ' + (i * 0.1) + 's, transform 0.6s ease ' + (i * 0.1) + 's';
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'none';
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
 
-  $$('.feature-card').forEach((card, i) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(24px)';
-    card.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
-    observer.observe(card);
-  });
-
+  cards.forEach(card => observer.observe(card));
 })();
 
-  
 
-// Helper to add .revealed to any element on scroll
-function revealOnScroll(selector, dir = 'up') {
-  const els = $$(selector);
-  if (!els.length) return;
-  const map = { up: 'translateY(24px)', left: 'translateX(-24px)', right: 'translateX(24px)' };
-  els.forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = map[dir] || map.up;
-    el.style.transition = `opacity 0.65s ease ${i * 0.08}s, transform 0.65s ease ${i * 0.08}s`;
-  });
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'none';
-        obs.unobserve(e.target);
-      }
+// ============================================================
+// GENERAL SCROLL REVEAL
+// ============================================================
+(function initScrollReveal() {
+  var selectors = ['.stat-list li', '.news-card', '.media-item', '.class-card', '.social-card'];
+
+  selectors.forEach(function(selector) {
+    var els = $$(selector);
+    if (!els.length) return;
+
+    els.forEach(function(el, i) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.65s ease ' + (i * 0.08) + 's, transform 0.65s ease ' + (i * 0.08) + 's';
     });
-  }, { threshold: 0.1 });
-  els.forEach(el => obs.observe(el));
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-  revealOnScroll('.stat-list li', 'up');
-  revealOnScroll('.news-card', 'up');
-  revealOnScroll('.media-item', 'up');
-  revealOnScroll('.class-card', 'up');
-  revealOnScroll('.social-card', 'up');
-});
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    els.forEach(function(el) { obs.observe(el); });
+  });
+})();
 
 
 // ============================================================
-// FORM VALIDATION — newsletter form
-// Shows errors BEFORE submit; displays success state
+// FORM VALIDATION
 // ============================================================
 (function initFormValidation() {
-  const form = $('#newsletter-form');
+  var form = document.getElementById('newsletter-form');
   if (!form) return;
 
-  const nameInput    = $('#nl-name',    form) || $('#newsletter-name', form);
-  const emailInput   = $('#nl-email',   form) || $('#newsletter-email', form);
-  const consentBox   = $('#nl-consent', form) || $('#newsletter-consent', form);
-  const successMsg   = $('#form-success');
+  var emailInput = document.getElementById('nl-email');
+  var consentBox = document.getElementById('nl-consent');
+  var successMsg = document.getElementById('form-success');
 
-  // Helper: set error message
   function setError(inputEl, errorId, message) {
-    const errorEl = document.getElementById(errorId);
+    var errorEl = document.getElementById(errorId);
     if (!errorEl) return;
     if (inputEl) inputEl.classList.toggle('error', !!message);
     errorEl.textContent = message || '';
   }
 
-  // Helper: validate email format
   function isValidEmail(val) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim());
   }
 
-  // Real-time validation on blur
   if (emailInput) {
-    emailInput.addEventListener('blur', () => {
-      const val = emailInput.value.trim();
-      const errorId = emailInput.getAttribute('aria-describedby') || 'nl-email-error';
+    emailInput.addEventListener('blur', function() {
+      var val = emailInput.value.trim();
       if (!val) {
-        setError(emailInput, errorId, 'Email address is required.');
+        setError(emailInput, 'nl-email-error', 'Email address is required.');
       } else if (!isValidEmail(val)) {
-        setError(emailInput, errorId, 'Please enter a valid email address.');
+        setError(emailInput, 'nl-email-error', 'Please enter a valid email address.');
       } else {
-        setError(emailInput, errorId, '');
-      }
-    });
-
-    emailInput.addEventListener('input', () => {
-      if (emailInput.classList.contains('error') && isValidEmail(emailInput.value.trim())) {
-        const errorId = emailInput.getAttribute('aria-describedby') || 'nl-email-error';
-        setError(emailInput, errorId, '');
+        setError(emailInput, 'nl-email-error', '');
       }
     });
   }
 
-  // Submit handler
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
-    let hasErrors = false;
+    var hasErrors = false;
 
-    // Validate email (required)
     if (emailInput) {
-      const val = emailInput.value.trim();
-      const errorId = emailInput.getAttribute('aria-describedby') || 'nl-email-error';
+      var val = emailInput.value.trim();
       if (!val) {
-        setError(emailInput, errorId, 'Email address is required.');
+        setError(emailInput, 'nl-email-error', 'Email address is required.');
         hasErrors = true;
       } else if (!isValidEmail(val)) {
-        setError(emailInput, errorId, 'Please enter a valid email address.');
+        setError(emailInput, 'nl-email-error', 'Please enter a valid email address.');
         hasErrors = true;
       } else {
-        setError(emailInput, errorId, '');
+        setError(emailInput, 'nl-email-error', '');
       }
     }
 
-    // Validate consent (required)
     if (consentBox && !consentBox.checked) {
-      const errorId = consentBox.getAttribute('aria-describedby') || 'nl-consent-error';
-      setError(consentBox, errorId, 'You must agree to receive emails to continue.');
+      setError(consentBox, 'nl-consent-error', 'You must agree to receive emails to continue.');
       hasErrors = true;
     } else if (consentBox) {
-      const errorId = consentBox.getAttribute('aria-describedby') || 'nl-consent-error';
-      setError(consentBox, errorId, '');
+      setError(consentBox, 'nl-consent-error', '');
     }
 
-    if (hasErrors) {
-      // Focus first error field
-      const firstErr = form.querySelector('.error');
-      if (firstErr) firstErr.focus();
-      return;
-    }
+    if (hasErrors) return;
 
-    // Success state
     form.style.display = 'none';
     if (successMsg) {
       successMsg.removeAttribute('hidden');
       successMsg.focus();
     }
-
-    console.log('Form submitted:', {
-      name:     nameInput ? nameInput.value.trim() : '',
-      email:    emailInput ? emailInput.value.trim() : '',
-      consent:  consentBox ? consentBox.checked : false,
-    });
   });
 })();
 
 
 // ============================================================
-// ACTIVE NAV LINK — highlight current page
+// ACTIVE NAV LINK
 // ============================================================
 (function setActiveNav() {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
-  $$('.nav-link, .mobile-nav a').forEach(link => {
-    const href = link.getAttribute('href') || '';
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+  $$('.nav-link, .mobile-nav a').forEach(function(link) {
+    var href = link.getAttribute('href') || '';
     if (href === path || (path === '' && href === 'index.html')) {
       link.classList.add('active');
     } else {
@@ -281,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ============================================================
-// FAQ ACCORDION (for faq.html)
+// FAQ ACCORDION
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.faq-item').forEach(function(item) {
@@ -292,14 +254,12 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.addEventListener('click', function() {
       var isOpen = item.classList.contains('open');
 
-      // Close all
       document.querySelectorAll('.faq-item').forEach(function(openItem) {
         openItem.classList.remove('open');
         var q = openItem.querySelector('.faq-question');
         if (q) q.setAttribute('aria-expanded', 'false');
       });
 
-      // Open clicked if it was closed
       if (!isOpen) {
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
@@ -310,18 +270,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // ============================================================
-// SMOOTH SCROLL for anchor links
+// SMOOTH SCROLL
 // ============================================================
 (function initSmoothScroll() {
-  $$('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const id = link.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
+  $$('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
-      const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h') || '76');
-      const top = target.getBoundingClientRect().top + window.scrollY - offset - 16;
-      window.scrollTo({ top, behavior: 'smooth' });
+      var top = target.getBoundingClientRect().top + window.scrollY - 92;
+      window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
 })();
