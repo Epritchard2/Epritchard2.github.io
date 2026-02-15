@@ -542,7 +542,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero content */
 .hero-content {
   opacity: 1 !important;
-  transform: none !important;
+  transform: tranlateX(30px);
+  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
 }
 
 .hero-content.revealed {
