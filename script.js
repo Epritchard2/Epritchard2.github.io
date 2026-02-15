@@ -1,10 +1,10 @@
 /**
- * Game Title — script.js
+ * Omnæs Dæmones — script.js
  * Handles: header scroll behavior, mobile menu, form validation,
  * scroll reveal animations, language selector sync
  */
 
-console.log("Game Title website loaded successfully!");
+console.log("Omnæs Dæmones website loaded successfully!");
 
 // ============================================================
 // UTILITY
