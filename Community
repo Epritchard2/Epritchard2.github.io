@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Game Title Community Hub — join the Discord, follow socials, connect with thousands of dark fantasy RPG players.">
+  <title>Community — Game Title</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    .social-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 2rem;
+    }
+    .social-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+    .social-card:hover {
+      border-color: var(--color-gold);
+      background: var(--color-bg-card2);
+      transform: translateY(-4px);
+    }
+    .social-card-icon {
+      font-size: 2rem;
+      color: var(--color-gold);
+    }
+    .social-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--color-text-bright);
+    }
+    .social-card p {
+      font-size: 1rem;
+      color: var(--color-text-dim);
+      line-height: 1.6;
+    }
+    .social-card .card-cta {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-top: auto;
+    }
+    .community-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin: 3rem 0;
+    }
+    .comm-stat {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .comm-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      color: var(--color-gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .comm-stat-label {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-dim);
+    }
+    .guidelines-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      counter-reset: guideline-counter;
+    }
+    .guidelines-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      counter-increment: guideline-counter;
+      padding: 1.2rem 1.5rem;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      border-radius: var(--radius);
+    }
+    .guidelines-list li::before {
+      content: counter(guideline-counter, decimal-leading-zero);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--color-gold-dim);
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+    .guidelines-list li p {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--color-text);
+    }
+    .guidelines-list li strong {
+      color: var(--color-text-bright);
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 2px;
+    }
+    @media (max-width: 700px) {
+      .social-cards-grid { grid-template-columns: 1fr; }
+      .community-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Game Title — Return to home">
+        <span class="logo-emblem" aria-hidden="true">⬡</span>
+        <span class="logo-text">Game Title</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="features.html" class="nav-link">Features</a></li>
+          <li><a href="media.html" class="nav-link">Media</a></li>
+          <li><a href="community.html" class="nav-link active">Community</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-controls">
+        <label for="lang-desktop" class="sr-only">Select Language</label>
+        <select id="lang-desktop" class="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+        </select>
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="mobile-controls">
+        <label for="lang-mobile" class="sr-only">Select Language</label>
+        <select id="lang-mobile" class="lang-select">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section class="page-hero" aria-labelledby="community-hero-heading">
+      <div class="page-hero-overlay" aria-hidden="true"></div>
+      <div class="page-hero-inner">
+        <p class="section-tag">Join Us</p>
+        <h1 class="page-hero-title" id="community-hero-heading">Community Hub</h1>
+        <p class="page-hero-sub">Connect with thousands of players across the dark realm.</p>
+      </div>
+    </section>
+
+    <!-- Community stats -->
+    <section class="section-block" aria-labelledby="community-stats-heading">
+      <div class="section-inner">
+        <p class="section-tag">By the Numbers</p>
+        <h2 class="section-title" id="community-stats-heading">Our Community</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="community-stats" role="list" aria-label="Community statistics">
+          <div class="comm-stat" role="listitem">
+            <span class="comm-stat-num">50K+</span>
+            <span class="comm-stat-label">Discord Members</span>
+          </div>
+          <div class="comm-stat" role="listitem">
+            <span class="comm-stat-num">120K+</span>
+            <span class="comm-stat-label">Registered Players</span>
+          </div>
+          <div class="comm-stat" role="listitem">
+            <span class="comm-stat-num">8K+</span>
+            <span class="comm-stat-label">Forum Posts per Week</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social channels -->
+    <section class="section-block dark-section" aria-labelledby="socials-heading">
+      <div class="section-inner">
+        <p class="section-tag">Find Us Everywhere</p>
+        <h2 class="section-title" id="socials-heading">Social Channels</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="social-cards-grid">
+          <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="Join our Discord server — opens in new tab">
+            <div class="social-card-icon" aria-hidden="true">💬</div>
+            <h3>Discord</h3>
+            <p>Our most active community. Chat with players, get early patch notes, and talk directly with the dev team.</p>
+            <span class="card-cta">Join Server ↗</span>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="Follow us on Twitter — opens in new tab">
+            <div class="social-card-icon" aria-hidden="true">✦</div>
+            <h3>Twitter / X</h3>
+            <p>Real-time announcements, patch teasers, community spotlights, and live event coverage.</p>
+            <span class="card-cta">Follow Us ↗</span>
+          </a>
+          <a href="https://reddit.com/r/gaming" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="Visit our Reddit — opens in new tab">
+            <div class="social-card-icon" aria-hidden="true">☽</div>
+            <h3>Reddit</h3>
+            <p>Deep dives into game lore, build guides, theory-crafting, and fan art from the community.</p>
+            <span class="card-cta">Visit Subreddit ↗</span>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="Subscribe on YouTube — opens in new tab">
+            <div class="social-card-icon" aria-hidden="true">⬡</div>
+            <h3>YouTube</h3>
+            <p>Trailers, developer diaries, tutorial videos, and community content creator spotlights.</p>
+            <span class="card-cta">Subscribe ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community guidelines (ordered list) -->
+    <section class="section-block" aria-labelledby="guidelines-heading">
+      <div class="section-inner">
+        <p class="section-tag">Play Fair</p>
+        <h2 class="section-title" id="guidelines-heading">Community Guidelines</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="body-text" style="margin-bottom:2rem;">To keep our community a welcoming place for all players, we ask everyone to follow these guidelines.</p>
+        <ol class="guidelines-list" aria-label="List of community guidelines">
+          <li>
+            <div>
+              <strong>Respect all players</strong>
+              <p>Treat fellow adventurers with courtesy regardless of skill level, background, or playstyle.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>No harassment or hate speech</strong>
+              <p>Discriminatory language, threats, or targeted harassment of any kind will result in immediate ban.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>No cheating or exploits</strong>
+              <p>Using third-party software, exploiting bugs for unfair advantage, or griefing other players is prohibited.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Keep spoilers tagged</strong>
+              <p>Mark story spoilers appropriately in forums and Discord channels dedicated to new players.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Report bugs, not players</strong>
+              <p>If you encounter an exploit, report it to our team rather than abusing it. Bug reporters are rewarded.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="Game Title home">
+          <span class="logo-emblem" aria-hidden="true">⬡</span>
+          <span class="logo-text">Game Title</span>
+        </a>
+        <p class="footer-tagline">Forge your legend in the dark.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-col">
+          <h4 class="footer-heading">Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow Us</h4>
+          <ul>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
+            <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord ↗</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Game Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
