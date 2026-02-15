@@ -452,7 +452,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
   padding: 120px 40px 80px;
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 520px 1fr;
   gap: 80px;
   align-items: center;
   width: 100%;
