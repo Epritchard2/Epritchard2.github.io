@@ -1,31 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #111;
+    color: white;
 }
 
 header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-nav {
-    background-color: #34495e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #222;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    justify-content: center;
-}
-
-nav li {
-    margin: 0 15px;
+    gap: 20px;
 }
 
 nav a {
@@ -33,21 +29,52 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.user-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
 
-main {
+.hero {
+    height: 80vh;
+    background: url('https://via.placeholder.com/1920x1080') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    text-align: center;
+}
+
+.about, .features {
+    padding: 60px 40px;
+}
+
+.feature-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #222;
     padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
+    flex: 1;
 }
 
 footer {
-    background-color: #2c3e50;
-    color: white;
+    background-color: #222;
+    padding: 30px;
     text-align: center;
-    padding: 10px;
+}
+
+.footer-links {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 10px;
 }
