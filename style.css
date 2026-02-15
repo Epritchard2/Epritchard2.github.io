@@ -1184,6 +1184,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .hero {
     background-image: url('images/hero-bg.jpg') !important;
+    min-height: 60vh;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: scroll !important;
