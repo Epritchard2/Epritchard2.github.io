@@ -6,6 +6,7 @@ console.log("Omnæs Dæmones website loaded successfully!");
 // Fix parallax on mobile
 if (/Mobi|Android/i.test(navigator.userAgent)) {
   document.body.style.backgroundAttachment = 'scroll';
+}
 
 // ============================================================
 // UTILITY
