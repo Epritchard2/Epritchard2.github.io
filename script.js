@@ -292,19 +292,20 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================================
 // FAQ ACCORDION (for faq.html)
 // ============================================================
-(function initFAQ() {
-  $$('.faq-item').forEach(item => {
-    const btn = item.querySelector('.faq-question');
-    const ans = item.querySelector('.faq-answer');
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var btn = item.querySelector('.faq-question');
+    var ans = item.querySelector('.faq-answer');
     if (!btn || !ans) return;
 
-    btn.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
+    btn.addEventListener('click', function() {
+      var isOpen = item.classList.contains('open');
 
       // Close all
-      $$('.faq-item.open').forEach(openItem => {
+      document.querySelectorAll('.faq-item').forEach(function(openItem) {
         openItem.classList.remove('open');
-        openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        var q = openItem.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
       });
 
       // Open clicked if it was closed
@@ -314,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-})();
+});
 
 
 // ============================================================
