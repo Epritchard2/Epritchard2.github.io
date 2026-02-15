@@ -1178,10 +1178,14 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   body {
-    background-attachment: scroll;
+    background-attachment: scroll !important;
+    background-size: cover !important;
   }
   .page-hero {
-    background-attachment: scroll;
+    background-attachment: scroll !important;
+  }
+  .hero {
+    background-attachment: scroll !important;
   }
 }
 
