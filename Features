@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Game Title features — explore combat, magic, open world, and class comparison for this gothic fantasy RPG.">
+  <title>Features — Game Title</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Game Title — Return to home">
+        <span class="logo-emblem" aria-hidden="true">⬡</span>
+        <span class="logo-text">Game Title</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="features.html" class="nav-link active">Features</a></li>
+          <li><a href="media.html" class="nav-link">Media</a></li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-controls">
+        <label for="lang-desktop" class="sr-only">Select Language</label>
+        <select id="lang-desktop" class="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+        </select>
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="mobile-controls">
+        <label for="lang-mobile" class="sr-only">Select Language</label>
+        <select id="lang-mobile" class="lang-select">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+        </select>
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Page hero banner -->
+    <section class="page-hero" aria-labelledby="page-hero-heading">
+      <div class="page-hero-overlay" aria-hidden="true"></div>
+      <div class="page-hero-inner">
+        <p class="section-tag">Discover</p>
+        <h1 class="page-hero-title" id="page-hero-heading">Game Features</h1>
+        <p class="page-hero-sub">Everything that makes the Dark Realm worth entering.</p>
+      </div>
+    </section>
+
+    <!-- Feature cards grid -->
+    <section class="section-block" aria-labelledby="features-grid-heading">
+      <div class="section-inner">
+        <p class="section-tag">Core Systems</p>
+        <h2 class="section-title" id="features-grid-heading">What Awaits You</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⚔</div>
+            <h3 class="feature-name">Combat System</h3>
+            <p class="feature-desc">Fluid, skill-based combat that rewards timing and tactical thinking. Chain devastating combos across three distinct fighting styles. Every weapon has unique move sets and finishing animations.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🜃</div>
+            <h3 class="feature-name">Dark Magic</h3>
+            <p class="feature-desc">Harness forbidden spells drawn from ancient grimoires. Wield fire, shadow, and soul-bound energy. Master arcane rituals that alter the battlefield and shift the tide of any encounter.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">✦</div>
+            <h3 class="feature-name">Open World</h3>
+            <p class="feature-desc">Explore a vast gothic landscape — haunted forests, cursed cities, and subterranean ruins each hiding secrets, dungeons, and dangers that scale with your character's power.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">☽</div>
+            <h3 class="feature-name">Dynamic Lore</h3>
+            <p class="feature-desc">A living world that reacts to your choices. Uncover layered narratives through artifacts, NPCs, and environmental storytelling that evolves with each playthrough.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Class comparison TABLE (required element) -->
+    <section class="section-block dark-section" aria-labelledby="class-table-heading">
+      <div class="section-inner">
+        <p class="section-tag">Choose Your Path</p>
+        <h2 class="section-title" id="class-table-heading">Class Comparison</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="body-text" style="margin-bottom:2rem;">Compare the three playable classes to find your ideal playstyle.</p>
+
+        <div class="comparison-table-wrap">
+          <table class="comparison-table" aria-label="Comparison of the three playable classes">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Knight</th>
+                <th scope="col">Sorcerer</th>
+                <th scope="col">Shadow-Walker</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Playstyle</td>
+                <td>Melee tank</td>
+                <td>Ranged caster</td>
+                <td>Stealth assassin</td>
+              </tr>
+              <tr>
+                <td>Difficulty</td>
+                <td>Beginner friendly</td>
+                <td>Intermediate</td>
+                <td>Advanced</td>
+              </tr>
+              <tr>
+                <td>Heavy Armor</td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+                <td><span class="cross" aria-label="No">✗</span></td>
+                <td><span class="cross" aria-label="No">✗</span></td>
+              </tr>
+              <tr>
+                <td>Spell Casting</td>
+                <td><span class="cross" aria-label="No">✗</span></td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Stealth Abilities</td>
+                <td><span class="cross" aria-label="No">✗</span></td>
+                <td><span class="cross" aria-label="No">✗</span></td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Starting Health</td>
+                <td>200</td>
+                <td>120</td>
+                <td>150</td>
+              </tr>
+              <tr>
+                <td>Starting Mana</td>
+                <td>40</td>
+                <td>180</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>Unique Skill Tree</td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Multiplayer Support</td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+                <td><span class="check" aria-label="Yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Recommended For</td>
+                <td>New players</td>
+                <td>Strategy lovers</td>
+                <td>Experienced players</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-block" aria-labelledby="features-cta-heading">
+      <div class="section-inner" style="text-align:center;">
+        <p class="section-tag">Ready?</p>
+        <h2 class="section-title" id="features-cta-heading">Begin Your Journey</h2>
+        <div class="divider" aria-hidden="true" style="margin-left:auto;margin-right:auto;"></div>
+        <p class="body-text" style="margin:0 auto 2rem;text-align:center;">Choose your class. Enter the realm. Forge your legend.</p>
+        <a href="signup.html" class="btn-primary btn-large">Play Now — It's Free</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="Game Title home">
+          <span class="logo-emblem" aria-hidden="true">⬡</span>
+          <span class="logo-text">Game Title</span>
+        </a>
+        <p class="footer-tagline">Forge your legend in the dark.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-col">
+          <h4 class="footer-heading">Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow Us</h4>
+          <ul>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter — opens in new tab">Twitter / X</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram — opens in new tab">Instagram</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube — opens in new tab">YouTube</a></li>
+            <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord — opens in new tab">Discord</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Game Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
