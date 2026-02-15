@@ -306,15 +306,12 @@ document.addEventListener('DOMContentLoaded', () => {
       $$('.faq-item.open').forEach(openItem => {
         openItem.classList.remove('open');
         openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-        const a = openItem.querySelector('.faq-answer');
-        if (a) { a.style.maxHeight = '0'; a.style.padding = '0 1.5rem'; }
       });
 
+      // Open clicked if it was closed
       if (!isOpen) {
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
-        ans.style.maxHeight = ans.scrollHeight + 'px';
-        ans.style.padding = '1.2rem 1.5rem';
       }
     });
   });
