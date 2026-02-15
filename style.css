@@ -61,6 +61,10 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   overflow-x: hidden;
+   background-image: url('images/hero-bg.jpg');
+   background-attachment: fixed;
+   background-size: cover;
+   background-posistion: center;
 }
 
 img, picture, video, canvas, svg {
