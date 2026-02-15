@@ -132,14 +132,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     observer.observe(card);
   });
 
-  // Resource items
-  $$('.resource-link').forEach((item, i) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateX(-16px)';
-    item.style.transition = `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`;
-    observer.observe(item.parentElement);
-  });
-})();
+  
 
 // Helper to add .revealed to any element on scroll
 function revealOnScroll(selector, dir = 'up') {
