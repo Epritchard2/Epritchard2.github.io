@@ -1179,19 +1179,12 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 639px) {
   body {
     background-image: none !important;
-    background-attachment: scroll !important;
   }
   .hero {
     background-image: url('images/hero-bg.jpg') !important;
-    background-attachment: scroll !important;
     background-size: cover !important;
     background-position: center !important;
-  }
-  .page-hero {
-    background-image: url('images/hero-bg.jpg') !important;
     background-attachment: scroll !important;
-    background-size: cover !important;
-    background-position: center !important;
   }
 }
 
