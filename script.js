@@ -107,14 +107,11 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   const targets = $$('[data-reveal]');
   if (!targets.length) return;
 
-  // Initial state is set in CSS via opacity:0 / translateX
-  // Hero elements get revealed on DOMContentLoaded
   const heroLeft  = $('.hero-logo-art');
   const heroRight = $('.hero-content');
   if (heroLeft)  setTimeout(() => heroLeft.classList.add('revealed'),  200);
   if (heroRight) setTimeout(() => heroRight.classList.add('revealed'), 400);
 
-  // Remaining elements revealed on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -124,13 +121,14 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     });
   }, { threshold: 0.12 });
 
-  // Feature cards — staggered reveal
   $$('.feature-card').forEach((card, i) => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(24px)';
     card.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
     observer.observe(card);
   });
+
+})();
 
   
 
