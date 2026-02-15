@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Game Title FAQ — Frequently asked questions about gameplay, system requirements, account setup, and more.">
+  <title>FAQ — Game Title</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* FAQ-specific styles */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 60px;
+      align-items: start;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 2px; }
+    .faq-item {
+      border: 1px solid var(--color-border-dim);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--color-bg-card);
+      transition: border-color var(--transition);
+    }
+    .faq-item.open { border-color: var(--color-border); }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--color-text-bright);
+      text-align: left;
+      min-height: 46px;
+      transition: color var(--transition);
+    }
+    .faq-question:hover { color: var(--color-gold-light); }
+    .faq-item.open .faq-question { color: var(--color-gold-light); }
+    .faq-chevron {
+      font-size: 0.8rem;
+      color: var(--color-gold-dim);
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1.5rem;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--color-text);
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding: 1.2rem 1.5rem;
+    }
+    .faq-sidebar {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .faq-sidebar h3 {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.2rem;
+    }
+    .faq-sidebar ul { display: flex; flex-direction: column; gap: 8px; }
+    .faq-sidebar ul li a {
+      font-size: 0.95rem;
+      color: var(--color-text-dim);
+      transition: color var(--transition), padding-left var(--transition);
+      display: block;
+    }
+    .faq-sidebar ul li a:hover { color: var(--color-gold-light); padding-left: 4px; }
+    @media (max-width: 900px) {
+      .faq-grid { grid-template-columns: 1fr; }
+      .faq-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Game Title — Return to home">
+        <span class="logo-emblem" aria-hidden="true">⬡</span>
+        <span class="logo-text">Game Title</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="features.html" class="nav-link">Features</a></li>
+          <li><a href="media.html" class="nav-link">Media</a></li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-controls">
+        <label for="lang-desktop" class="sr-only">Select Language</label>
+        <select id="lang-desktop" class="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+        </select>
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="mobile-controls">
+        <label for="lang-mobile" class="sr-only">Select Language</label>
+        <select id="lang-mobile" class="lang-select">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section class="page-hero" aria-labelledby="faq-hero-heading">
+      <div class="page-hero-overlay" aria-hidden="true"></div>
+      <div class="page-hero-inner">
+        <p class="section-tag">Help Center</p>
+        <h1 class="page-hero-title" id="faq-hero-heading">Frequently Asked Questions</h1>
+        <p class="page-hero-sub">Find answers about gameplay, accounts, and system requirements.</p>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion + Sidebar -->
+    <section class="section-block" aria-labelledby="faq-list-heading">
+      <div class="section-inner">
+        <div class="faq-grid">
+
+          <div>
+            <p class="section-tag">Common Questions</p>
+            <h2 class="section-title" id="faq-list-heading">FAQ</h2>
+            <div class="divider" aria-hidden="true"></div>
+
+            <ol class="faq-list" aria-label="Frequently asked questions">
+
+              <li class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+                  Is Game Title free to play?
+                  <span class="faq-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-1" role="region" aria-label="Answer: Is Game Title free to play?">
+                  Yes! The base game is free to play. Premium cosmetic packs and expansion content are available for purchase but never affect gameplay balance.
+                </div>
+              </li>
+
+              <li class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+                  What platforms is Game Title available on?
+                  <span class="faq-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-2" role="region">
+                  Game Title is currently available on PC (Windows 10/11) via our website and Steam. Console versions for PlayStation 5 and Xbox Series X|S are in development.
+                </div>
+              </li>
+
+              <li class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+                  How do I create an account?
+                  <span class="faq-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-3" role="region">
+                  Click "Sign Up" in the top navigation. You'll need a valid email address and to create a username. Account creation is free and takes under two minutes.
+                </div>
+              </li>
+
+              <li class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+                  Does the game support multiplayer?
+                  <span class="faq-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-4" role="region">
+                  Yes. Game Title supports co-op play for up to 4 players and includes optional PvP zones for competitive players. The main story can be completed entirely solo.
+                </div>
+              </li>
+
+              <li class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+                  What are the minimum system requirements?
+                  <span class="faq-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-5" role="region">
+                  See the System Requirements table below for full details. Minimum specs: Windows 10, Intel i5-8400 or AMD Ryzen 5 2600, 8GB RAM, GTX 1060 or RX 580, 40GB storage.
+                </div>
+              </li>
+
+              <li class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+                  Can I change my class after creation?
+                  <span class="faq-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-6" role="region">
+                  Class selection is permanent per character, but you can create up to 3 characters per account — one per class. Character slots can be expanded through account settings.
+                </div>
+              </li>
+
+              <li class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-7">
+                  How often are updates released?
+                  <span class="faq-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-7" role="region">
+                  Minor patches are released bi-weekly. Major content updates drop every quarter and include new story chapters, dungeons, and world events. Sign up for our newsletter to stay informed.
+                </div>
+              </li>
+
+              <li class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-8">
+                  Where can I report bugs or get support?
+                  <span class="faq-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="faq-answer" id="faq-8" role="region">
+                  Use the "Report a Bug" link in the footer, or join our <a href="https://discord.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-gold);text-decoration:underline;">Discord server</a> where the dev team is active daily. Critical issues are addressed within 24–48 hours.
+                </div>
+              </li>
+
+            </ol>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="faq-sidebar" aria-label="Quick links and support resources">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html#newsletter">Join the Newsletter</a></li>
+              <li><a href="features.html">View All Features</a></li>
+              <li><a href="community.html">Community Hub</a></li>
+              <li><a href="signup.html">Create Account</a></li>
+            </ul>
+
+            <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--color-border-dim);">
+              <h3>External Support</h3>
+              <ul>
+                <li>
+                  <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" aria-label="Steam support — opens in new tab">
+                    Steam Support ↗
+                  </a>
+                </li>
+                <li>
+                  <a href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord community — opens in new tab">
+                    Discord Server ↗
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- System Requirements TABLE -->
+    <section class="section-block dark-section" aria-labelledby="sysreq-heading">
+      <div class="section-inner">
+        <p class="section-tag">PC Requirements</p>
+        <h2 class="section-title" id="sysreq-heading">System Requirements</h2>
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="comparison-table-wrap">
+          <table class="comparison-table" aria-label="PC system requirements — minimum and recommended">
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Minimum</th>
+                <th scope="col">Recommended</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>OS</td><td>Windows 10 (64-bit)</td><td>Windows 11 (64-bit)</td></tr>
+              <tr><td>Processor</td><td>Intel i5-8400 / AMD Ryzen 5 2600</td><td>Intel i7-10700K / AMD Ryzen 7 5800X</td></tr>
+              <tr><td>Memory (RAM)</td><td>8 GB</td><td>16 GB</td></tr>
+              <tr><td>Graphics</td><td>NVIDIA GTX 1060 / AMD RX 580</td><td>NVIDIA RTX 3070 / AMD RX 6700 XT</td></tr>
+              <tr><td>DirectX</td><td>Version 11</td><td>Version 12</td></tr>
+              <tr><td>Storage</td><td>40 GB available</td><td>40 GB SSD recommended</td></tr>
+              <tr><td>Network</td><td>Broadband internet</td><td>Broadband internet</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="Game Title home">
+          <span class="logo-emblem" aria-hidden="true">⬡</span>
+          <span class="logo-text">Game Title</span>
+        </a>
+        <p class="footer-tagline">Forge your legend in the dark.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-col">
+          <h4 class="footer-heading">Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow Us</h4>
+          <ul>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
+            <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord ↗</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Game Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
