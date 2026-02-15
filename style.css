@@ -430,14 +430,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   display: flex;
   align-items: center;
-  /* Fixed background — stays put while page scrolls */
-  background-image:
-    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(80,30,30,0.22) 0%, transparent 70%),
-    url('images/hero-bg.jpg');
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed; /* The key effect — fixed parallax */
-  background-color: var(--color-bg-dark);
+  background-color: transparent;
   overflow: hidden;
 }
 
@@ -623,6 +616,7 @@ h1, h2, h3, h4, h5, h6 {
 .section-block {
   padding: var(--section-pad);
   position: relative;
+   background: transparent;
 }
 
 .dark-section {
