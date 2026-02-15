@@ -1188,6 +1188,28 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@media (max-width: 639px) {
+  body {
+    background-image: none !important;
+    background-color: var(--color-bg) !important;
+  }
+  .hero {
+    background-image: url('images/hero-bg.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: scroll !important;
+  }
+  .page-hero {
+    background-image: url('images/hero-bg.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: scroll !important;
+  }
+  #features,
+  #newsletter {
+    background: var(--color-bg-mid) !important;
+  }
+}
 /* ============================================================
    PAGE HERO (inner pages)
    ============================================================ */
