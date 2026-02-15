@@ -1,2 +1,2 @@
 # Epritchard2.github.io
-home for site
+Web url for Game Website for SDEV153
