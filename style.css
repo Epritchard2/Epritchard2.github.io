@@ -741,7 +741,12 @@ h1, h2, h3, h4, h5, h6 {
 /* ============================================================
    RESOURCE LIST (External links)
    ============================================================ */
-.resource-list {
+#resources .resource-link {
+  background: rgba(17,14,28,0.85);
+  border-color: rgba(201,168,76,0.25);
+}
+
+   .resource-list {
   display: flex;
   flex-direction: column;
   gap: 2px;
