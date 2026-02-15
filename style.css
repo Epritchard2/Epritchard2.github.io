@@ -1,5 +1,5 @@
 /* ============================================================
-   GAME TITLE — style.css 
+   Omnæs Dæmones — style.css
    Single external CSS file — controls all site styling
    ============================================================ */
 
@@ -60,10 +60,10 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   overflow-x: hidden;
-   background-image: url('images/hero-bg.jpg');
-   background-attachment: fixed;
-   background-size: cover;
-   background-posistion: center;
+  background-image: url('images/hero-bg.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
 }
 
 img, picture, video, canvas, svg {
@@ -615,16 +615,26 @@ h1, h2, h3, h4, h5, h6 {
 .section-block {
   padding: var(--section-pad);
   position: relative;
-   background: transparent;
+  background: transparent;
 }
 
 .dark-section {
-  background: var(--color-bg-mid);
+  background: rgba(13,11,20,0.96);
 }
 
 .section-inner {
   max-width: var(--max-w);
   margin: 0 auto;
+}
+
+/* About section — solid background */
+#about {
+  background: rgba(7,6,11,0.94);
+}
+
+/* Resources section — solid background */
+#resources {
+  background: rgba(7,6,11,0.94);
 }
 
 /* ============================================================
@@ -1166,13 +1176,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 340px;
   display: flex;
   align-items: flex-end;
-  background-image:
-    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(80,30,30,0.2) 0%, transparent 70%),
-    url('images/hero-bg.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  background-color: var(--color-bg-dark);
+  background: transparent;
   padding-top: var(--header-h);
 }
 .page-hero-overlay {
