@@ -92,10 +92,14 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
 // ============================================================
 // HERO REVEAL
+// Hero content is always visible via CSS (transform: none).
+// The JS class is kept for compatibility but is not required.
 // ============================================================
 (function initHeroReveal() {
-  const heroRight = $('.hero-content');
-  if (heroRight) setTimeout(() => heroRight.classList.add('revealed'), 200);
+  const heroContent = $('.hero-content');
+  if (!heroContent) return;
+  // Immediately mark as revealed — no delay, no dependency on scroll
+  heroContent.classList.add('revealed');
 })();
 
 
@@ -285,5 +289,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 })();
-
-
