@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create your Omnæs Dæmones account and begin your journey.">
+  <title>Sign Up — Omnæs Dæmones</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    .auth-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 60px;
+    }
+    .auth-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 440px;
+    }
+    .auth-card .section-tag { margin-bottom: 0.4rem; }
+    .auth-card .section-title { font-size: 1.8rem; margin-bottom: 0.3rem; }
+    .auth-card .divider { margin: 1rem 0 2rem; }
+    .auth-footer-text {
+      font-size: 0.95rem;
+      color: var(--color-text-dim);
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .auth-footer-text a {
+      color: var(--color-gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .under-construction-notice {
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid var(--color-border-dim);
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-dim);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Omnæs Dæmones — Return to home">
+        <span class="logo-emblem" aria-hidden="true">⬡</span>
+        <span class="logo-text">Omnæs Dæmones</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="features.html" class="nav-link">Features</a></li>
+          <li><a href="media.html" class="nav-link">Media</a></li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-controls">
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="mobile-controls">
+        <a href="login.html" class="btn-ghost">Log In</a>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <p class="section-tag">Begin Your Journey</p>
+        <h1 class="section-title">Sign Up</h1>
+        <div class="divider" aria-hidden="true"></div>
+
+        <form id="signup-form" novalidate aria-label="Sign up form">
+          <div class="form-group">
+            <label for="signup-name" class="form-label">Username <span class="req-mark" aria-label="required">*</span></label>
+            <input type="text" id="signup-name" name="username" class="form-input"
+              placeholder="Choose a username" autocomplete="username"
+              aria-required="true" required>
+          </div>
+          <div class="form-group" style="margin-top:1rem;">
+            <label for="signup-email" class="form-label">Email Address <span class="req-mark" aria-label="required">*</span></label>
+            <input type="email" id="signup-email" name="email" class="form-input"
+              placeholder="your@email.com" autocomplete="email"
+              aria-required="true" required>
+          </div>
+          <div class="form-group" style="margin-top:1rem;">
+            <label for="signup-password" class="form-label">Password <span class="req-mark" aria-label="required">*</span></label>
+            <input type="password" id="signup-password" name="password" class="form-input"
+              placeholder="••••••••" autocomplete="new-password"
+              aria-required="true" required>
+          </div>
+          <div class="form-group form-check-group" style="margin-top:1rem;">
+            <input type="checkbox" id="signup-consent" name="consent" class="form-checkbox" aria-required="true">
+            <label for="signup-consent" class="check-label">
+              I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+            </label>
+          </div>
+          <div style="margin-top:1.5rem;">
+            <button type="submit" class="btn-primary btn-large" style="width:100%;text-align:center;">
+              Forge Your Legend
+            </button>
+          </div>
+        </form>
+
+        <div class="under-construction-notice" aria-live="polite">
+          ⚒ Website Under Construction — Accounts coming soon
+        </div>
+
+        <p class="auth-footer-text">
+          Already have an account? <a href="login.html">Log In</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="Omnæs Dæmones home">
+          <span class="logo-emblem" aria-hidden="true">⬡</span>
+          <span class="logo-text">Omnæs Dæmones</span>
+        </a>
+        <p class="footer-tagline">Website Under Construction.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-col">
+          <h4 class="footer-heading">Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow Us</h4>
+          <ul>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
+            <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord ↗</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Game Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
