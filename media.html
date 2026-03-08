@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,10 +64,6 @@
       grid-column: span 2;
       aspect-ratio: 16/7;
     }
-    .media-tile--tall {
-      grid-row: span 2;
-      aspect-ratio: auto;
-    }
     .media-tile img {
       width: 100%;
       height: 100%;
@@ -76,23 +71,6 @@
       transition: transform 0.4s ease;
     }
     .media-tile:hover img { transform: scale(1.03); }
-    .media-tile-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      height: 100%;
-      color: var(--color-text-dim);
-      font-family: var(--font-heading);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-align: center;
-      padding: 1rem;
-      min-height: 120px;
-    }
-    .media-tile-placeholder span { font-size: 1.6rem; color: var(--color-gold-dim); }
     .media-tile-overlay {
       position: absolute;
       inset: 0;
@@ -113,21 +91,35 @@
       padding: 0.5em 1.2em;
       border-radius: var(--radius);
     }
+
+    /* Video grid — real embeds */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 2px;
     }
+    .video-embed-wrap {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      overflow: hidden;
+    }
+    .video-embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Placeholder tiles for slots without a real video yet */
     .video-tile {
       background: var(--color-bg-card);
       border: 1px solid var(--color-border-dim);
-      padding: 0;
       aspect-ratio: 16/9;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
     }
     .video-tile-inner {
       display: flex;
@@ -135,8 +127,6 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      width: 100%;
-      height: 100%;
       padding: 2rem;
       text-align: center;
     }
@@ -151,13 +141,6 @@
       justify-content: center;
       font-size: 1.2rem;
       color: var(--color-gold);
-      cursor: pointer;
-      transition: background var(--transition), border-color var(--transition), transform var(--transition);
-    }
-    .play-btn:hover {
-      background: rgba(201,168,76,0.28);
-      border-color: var(--color-gold);
-      transform: scale(1.08);
     }
     .video-label {
       font-family: var(--font-heading);
@@ -165,6 +148,15 @@
       letter-spacing: 0.08em;
       color: var(--color-text-dim);
     }
+    .video-coming-soon {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold-dim);
+      margin-top: 4px;
+    }
+
     @media (max-width: 900px) {
       .media-masonry { grid-template-columns: repeat(2, 1fr); }
       .media-tile--wide { grid-column: span 2; }
@@ -258,8 +250,7 @@
         <div class="media-panel active" id="panel-screenshots" role="tabpanel" aria-labelledby="tab-screenshots">
           <div class="media-masonry">
             <div class="media-tile media-tile--wide">
-              <!-- Replace src with your actual screenshot -->
-              <img src="images/screenshot-1.jpg" alt="Omnæs Dæmones — depcition of Hell and the surrounding landscape" onerror="this.style.display='none'">
+              <img src="images/screenshot-1.jpg" alt="Omnæs Dæmones — depiction of Hell and the surrounding landscape" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
             <div class="media-tile">
@@ -288,33 +279,49 @@
         <!-- Videos panel -->
         <div class="media-panel" id="panel-videos" role="tabpanel" aria-labelledby="tab-videos">
           <div class="video-grid">
-            <div class="video-tile">
-              <div class="video-tile-inner">
-                <div class="play-btn" role="button" tabindex="0" aria-label="Play Official Announcement Trailer">▶</div>
-                <p class="video-label">Official Announcement Trailer</p>
-              </div>
+
+            <!-- Embedded video -->
+            <div class="video-embed-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/HxYXZ98j898"
+                title="Omnæs Dæmones — Featured Track by TrippyTreebeard"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
             </div>
-            <div class="video-tile">
+
+            <!-- Channel link tiles -->
+            <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer"
+               class="video-tile" aria-label="Visit the TrippyTreebeard YouTube channel — opens in new tab">
               <div class="video-tile-inner">
-                <div class="play-btn" role="button" tabindex="0" aria-label="Play Gameplay Reveal">▶</div>
-                <p class="video-label">Gameplay Reveal — Combat System</p>
+                <div class="play-btn" aria-hidden="true">▶</div>
+                <p class="video-label">More Music &amp; Tracks</p>
+                <p class="video-coming-soon">YouTube Channel ↗</p>
               </div>
-            </div>
-            <div class="video-tile">
+            </a>
+
+            <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer"
+               class="video-tile" aria-label="Visit the TrippyTreebeard YouTube channel — opens in new tab">
               <div class="video-tile-inner">
-                <div class="play-btn" role="button" tabindex="0" aria-label="Play Developer Diary Episode 1">▶</div>
-                <p class="video-label">Developer Diary — Episode 1</p>
+                <div class="play-btn" aria-hidden="true">▶</div>
+                <p class="video-label">Full Playlist</p>
+                <p class="video-coming-soon">YouTube Channel ↗</p>
               </div>
-            </div>
-            <div class="video-tile">
+            </a>
+
+            <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer"
+               class="video-tile" aria-label="Visit the TrippyTreebeard YouTube channel — opens in new tab">
               <div class="video-tile-inner">
-                <div class="play-btn" role="button" tabindex="0" aria-label="Play Class Spotlight: The Knight">▶</div>
-                <p class="video-label">Class Spotlight — The Knight</p>
+                <div class="play-btn" aria-hidden="true">▶</div>
+                <p class="video-label">Latest Releases</p>
+                <p class="video-coming-soon">YouTube Channel ↗</p>
               </div>
-            </div>
+            </a>
+
           </div>
           <p style="margin-top:1.5rem; font-family:var(--font-heading); font-size:0.78rem; letter-spacing:0.1em; color:var(--color-text-dim); text-align:center;">
-            More videos on our <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-gold);" aria-label="YouTube channel — opens in new tab">YouTube channel ↗</a>
+            All music by <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer" style="color:var(--color-gold);" aria-label="TrippyTreebeard YouTube channel — opens in new tab">TrippyTreebeard ↗</a>
           </p>
         </div>
 
@@ -326,7 +333,7 @@
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
             <div class="media-tile">
-              <img src="images/art-2.jpg" alt="Omnæs Dæmones concept art — Wizard in dark black robes holding an old dusty grimorie" onerror="this.style.display='none'">
+              <img src="images/art-2.jpg" alt="Omnæs Dæmones concept art — Wizard in dark black robes holding an old dusty grimoire" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
             <div class="media-tile">
@@ -348,7 +355,7 @@
           <span class="logo-emblem" aria-hidden="true">⬡</span>
           <span class="logo-text">Omnæs Dæmones</span>
         </a>
-        <p class="footer-tagline">Forge your legend in the Hell.</p>
+        <p class="footer-tagline">Website Under Construction.</p>
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <div class="footer-col">
@@ -374,7 +381,7 @@
           <ul>
             <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
             <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
-            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
+            <li><a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
             <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord ↗</a></li>
           </ul>
         </div>
@@ -387,7 +394,6 @@
 
   <script src="script.js"></script>
   <script>
-    // Media tabs JS (page-specific, could also live in script.js)
     document.addEventListener('DOMContentLoaded', () => {
       const tabs = document.querySelectorAll('.media-tab');
       const panels = document.querySelectorAll('.media-panel');
@@ -400,7 +406,6 @@
           const target = document.getElementById(tab.getAttribute('aria-controls'));
           if (target) target.classList.add('active');
         });
-        // Keyboard support
         tab.addEventListener('keydown', (e) => {
           let idx = [...tabs].indexOf(tab);
           if (e.key === 'ArrowRight') { e.preventDefault(); tabs[(idx+1) % tabs.length].click(); tabs[(idx+1) % tabs.length].focus(); }
