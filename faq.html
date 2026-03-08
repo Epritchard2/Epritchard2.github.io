@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <style>
-    /* FAQ-specific styles */
     .faq-grid {
       display: grid;
       grid-template-columns: 1fr 340px;
@@ -61,9 +60,7 @@
       line-height: 1.75;
       color: var(--color-text);
     }
-    .faq-item.open .faq-answer {
-      display: block;
-    }
+    .faq-item.open .faq-answer { display: block; }
     .faq-sidebar {
       position: sticky;
       top: calc(var(--header-h) + 24px);
@@ -159,7 +156,6 @@
       </div>
     </section>
 
-    <!-- FAQ Accordion + Sidebar -->
     <section class="section-block" aria-labelledby="faq-list-heading">
       <div class="section-inner">
         <div class="faq-grid">
@@ -170,7 +166,6 @@
             <div class="divider" aria-hidden="true"></div>
 
             <ol class="faq-list" aria-label="Frequently asked questions">
-
               <li class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
                   Is Omnæs Dæmones free to play?
@@ -180,7 +175,6 @@
                   Yes! The base game is free to play. Premium cosmetic packs and expansion content are available for purchase but never affect gameplay balance.
                 </div>
               </li>
-
               <li class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
                   What platforms is Omnæs Dæmones available on?
@@ -190,7 +184,6 @@
                   Omnæs Dæmones is currently available on PC (Windows 10/11) via our website and Steam. Console versions for PlayStation 5 and Xbox Series X|S are in development.
                 </div>
               </li>
-
               <li class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
                   How do I create an account?
@@ -200,7 +193,6 @@
                   Click "Sign Up" in the top navigation. You'll need a valid email address and to create a username. Account creation is free and takes under two minutes.
                 </div>
               </li>
-
               <li class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
                   Does the game support multiplayer?
@@ -210,7 +202,6 @@
                   Yes. Omnæs Dæmones supports co-op play for up to 4 players and includes optional PvP zones for competitive players. The main story can be completed entirely solo.
                 </div>
               </li>
-
               <li class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
                   What are the minimum system requirements?
@@ -220,7 +211,6 @@
                   See the System Requirements table below for full details. Minimum specs: Windows 10, Intel i5-8400 or AMD Ryzen 5 2600, 8GB RAM, GTX 1060 or RX 580, 40GB storage.
                 </div>
               </li>
-
               <li class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
                   Can I change my class after creation?
@@ -230,7 +220,6 @@
                   Class selection is permanent per character, but you can create up to 3 characters per account — one per class. Character slots can be expanded through account settings.
                 </div>
               </li>
-
               <li class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-7">
                   How often are updates released?
@@ -240,7 +229,6 @@
                   Minor patches are released bi-weekly. Major content updates drop every quarter and include new story chapters, dungeons, and world events. Sign up for our newsletter to stay informed.
                 </div>
               </li>
-
               <li class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-8">
                   Where can I report bugs or get support?
@@ -250,11 +238,9 @@
                   Use the "Report a Bug" link in the footer, or join our <a href="https://discord.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-gold);text-decoration:underline;">Discord server</a> where the dev team is active daily. Critical issues are addressed within 24–48 hours.
                 </div>
               </li>
-
             </ol>
           </div>
 
-          <!-- Sidebar -->
           <aside class="faq-sidebar" aria-label="Quick links and support resources">
             <h3>Quick Links</h3>
             <ul>
@@ -263,34 +249,24 @@
               <li><a href="community.html">Community Hub</a></li>
               <li><a href="signup.html">Create Account</a></li>
             </ul>
-
             <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--color-border-dim);">
               <h3>External Support</h3>
               <ul>
-                <li>
-                  <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" aria-label="Steam support — opens in new tab">
-                    Steam Support ↗
-                  </a>
-                </li>
-                <li>
-                  <a href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord community — opens in new tab">
-                    Discord Server ↗
-                  </a>
-                </li>
+                <li><a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" aria-label="Steam support — opens in new tab">Steam Support ↗</a></li>
+                <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord community — opens in new tab">Discord Server ↗</a></li>
               </ul>
             </div>
           </aside>
+
         </div>
       </div>
     </section>
 
-    <!-- System Requirements TABLE -->
     <section class="section-block dark-section" aria-labelledby="sysreq-heading">
       <div class="section-inner">
         <p class="section-tag">PC Requirements</p>
         <h2 class="section-title" id="sysreq-heading">System Requirements</h2>
         <div class="divider" aria-hidden="true"></div>
-
         <div class="comparison-table-wrap">
           <table class="comparison-table" aria-label="PC system requirements — minimum and recommended">
             <thead>
@@ -323,11 +299,11 @@
           <span class="logo-emblem" aria-hidden="true">⬡</span>
           <span class="logo-text">Omnæs Dæmones</span>
         </a>
-        <p class="footer-tagline">Forge your legend in the Hell.</p>
+        <p class="footer-tagline">Website Under Construction.</p>
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <div class="footer-col">
-          <h4 class="footer-heading">Pages</h4>
+          <h3 class="footer-heading">Pages</h3>
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="features.html">Features</a></li>
@@ -337,7 +313,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4 class="footer-heading">Support</h4>
+          <h3 class="footer-heading">Support</h3>
           <ul>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="#">Contact Us</a></li>
@@ -346,11 +322,11 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4 class="footer-heading">Follow Us</h4>
+          <h3 class="footer-heading">Follow Us</h3>
           <ul>
             <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
             <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
-            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
+            <li><a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
             <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord ↗</a></li>
           </ul>
         </div>
