@@ -222,11 +222,15 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
     if (hasErrors) return;
 
-    form.style.display = 'none';
+    // Show success message temporarily then reset
     if (successMsg) {
       successMsg.removeAttribute('hidden');
       successMsg.focus();
     }
+    form.reset();
+    setTimeout(() => {
+      if (successMsg) successMsg.setAttribute('hidden', '');
+    }, 4000);
   });
 })();
 
