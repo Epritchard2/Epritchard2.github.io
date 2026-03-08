@@ -157,7 +157,63 @@
       margin-top: 4px;
     }
 
-    @media (max-width: 900px) {
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(5,4,8,0.95);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 0 80px rgba(0,0,0,0.9);
+      cursor: default;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 28px;
+      background: none;
+      border: 1px solid var(--color-border-dim);
+      color: var(--color-gold);
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.5em 1.2em;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: border-color var(--transition), background var(--transition);
+      z-index: 2001;
+    }
+    .lightbox-close:hover {
+      border-color: var(--color-gold);
+      background: rgba(201,168,76,0.1);
+    }
+    .lightbox-caption {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--color-text-dim);
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 90vw;
+    }
       .media-masonry { grid-template-columns: repeat(2, 1fr); }
       .media-tile--wide { grid-column: span 2; }
     }
@@ -353,27 +409,27 @@
         <!-- Screenshots panel -->
         <div class="media-panel active" id="panel-screenshots" role="tabpanel" aria-labelledby="tab-screenshots">
           <div class="media-masonry">
-            <div class="media-tile media-tile--wide">
+            <div class="media-tile media-tile--wide" role="button" tabindex="0" data-src="images/screenshot-1.jpg" data-alt="Omnæs Dæmones — depiction of Hell and the surrounding landscape">
               <img src="images/screenshot-1.jpg" alt="Omnæs Dæmones — depiction of Hell and the surrounding landscape" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
-            <div class="media-tile">
+            <div class="media-tile" role="button" tabindex="0" data-src="images/screenshot-2.jpg" data-alt="Omnæs Dæmones — Omni-Knight class character in heavy gothic plate armor">
               <img src="images/screenshot-2.jpg" alt="Omnæs Dæmones — Omni-Knight class character in heavy gothic plate armor" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
-            <div class="media-tile">
+            <div class="media-tile" role="button" tabindex="0" data-src="images/screenshot-3.jpg" data-alt="Omnæs Dæmones — Shadow-Walker class using stealth abilities in a moonlit graveyard">
               <img src="images/screenshot-3.jpg" alt="Omnæs Dæmones — Shadow-Walker class using stealth abilities in a moonlit graveyard" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
-            <div class="media-tile">
+            <div class="media-tile" role="button" tabindex="0" data-src="images/screenshot-4.jpg" data-alt="Omnæs Dæmones — Wizard class casting a massive dark magic spell in an open battlefield">
               <img src="images/screenshot-4.jpg" alt="Omnæs Dæmones — Wizard class casting a massive dark magic spell in an open battlefield" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
-            <div class="media-tile">
+            <div class="media-tile" role="button" tabindex="0" data-src="images/screenshot-5.jpg" data-alt="Omnæs Dæmones — A preview into the doomed city of Pandæmonium">
               <img src="images/screenshot-5.jpg" alt="Omnæs Dæmones — A preview into the doomed city of Pandæmonium" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
-            <div class="media-tile">
+            <div class="media-tile" role="button" tabindex="0" data-src="images/screenshot-6.jpg" data-alt="Omnæs Dæmones — an assortment of enchanted weapons">
               <img src="images/screenshot-6.jpg" alt="Omnæs Dæmones — an assortment of enchanted weapons" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
@@ -417,15 +473,15 @@
         <!-- Concept Art panel -->
         <div class="media-panel" id="panel-art" role="tabpanel" aria-labelledby="tab-art">
           <div class="media-masonry">
-            <div class="media-tile">
+            <div class="media-tile" role="button" tabindex="0" data-src="images/art-1.jpg" data-alt="Omnæs Dæmones concept art — Omni-Knight in gothic plate armor">
               <img src="images/art-1.jpg" alt="Omnæs Dæmones concept art — Omni-Knight in gothic plate armor" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
-            <div class="media-tile">
+            <div class="media-tile" role="button" tabindex="0" data-src="images/art-2.jpg" data-alt="Omnæs Dæmones concept art — Wizard in dark black robes holding an old dusty grimoire">
               <img src="images/art-2.jpg" alt="Omnæs Dæmones concept art — Wizard in dark black robes holding an old dusty grimoire" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
-            <div class="media-tile">
+            <div class="media-tile" role="button" tabindex="0" data-src="images/art-3.jpg" data-alt="Omnæs Dæmones concept art — a Shadow-Walker sticking to the shadows">
               <img src="images/art-3.jpg" alt="Omnæs Dæmones concept art — a Shadow-Walker sticking to the shadows" onerror="this.style.display='none'">
               <div class="media-tile-overlay" aria-hidden="true"><span>View</span></div>
             </div>
@@ -448,7 +504,7 @@
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <div class="footer-col">
-          <h4 class="footer-heading">Pages</h4>
+          <h3 class="footer-heading">Pages</h3>
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="features.html">Features</a></li>
@@ -458,7 +514,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4 class="footer-heading">Support</h4>
+          <h3 class="footer-heading">Support</h3>
           <ul>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="#">Contact Us</a></li>
@@ -466,7 +522,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4 class="footer-heading">Follow Us</h4>
+          <h3 class="footer-heading">Follow Us</h3>
           <ul>
             <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
             <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
@@ -481,8 +537,16 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close image viewer">✕ Close</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
   <script src="script.js"></script>
   <script>
+    // Tabs
     document.addEventListener('DOMContentLoaded', () => {
       const tabs = document.querySelectorAll('.media-tab');
       const panels = document.querySelectorAll('.media-panel');
@@ -500,6 +564,50 @@
           if (e.key === 'ArrowRight') { e.preventDefault(); tabs[(idx+1) % tabs.length].click(); tabs[(idx+1) % tabs.length].focus(); }
           if (e.key === 'ArrowLeft')  { e.preventDefault(); tabs[(idx-1+tabs.length) % tabs.length].click(); tabs[(idx-1+tabs.length) % tabs.length].focus(); }
         });
+      });
+
+      // Lightbox
+      const lightbox     = document.getElementById('lightbox');
+      const lightboxImg  = document.getElementById('lightbox-img');
+      const lightboxCap  = document.getElementById('lightbox-caption');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      function openLightbox(src, alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightboxCap.textContent = alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        lightboxClose.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      // Click on any tile with data-src
+      document.querySelectorAll('.media-tile[data-src]').forEach(tile => {
+        tile.style.cursor = 'pointer';
+        tile.addEventListener('click', () => {
+          openLightbox(tile.dataset.src, tile.dataset.alt);
+        });
+        tile.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(tile.dataset.src, tile.dataset.alt);
+          }
+        });
+      });
+
+      // Close on button, backdrop click, or Escape
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
       });
     });
   </script>
