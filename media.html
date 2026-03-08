@@ -165,6 +165,110 @@
       .media-masonry { grid-template-columns: 1fr; }
       .media-tile--wide { grid-column: span 1; }
       .video-grid { grid-template-columns: 1fr; }
+      .channel-card { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+      .channel-card-cta { align-self: flex-start; }
+    }
+
+    /* Centered featured video */
+    .video-feature-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .video-feature-embed {
+      position: relative;
+      width: 100%;
+      max-width: 780px;
+      aspect-ratio: 16/9;
+      border: 1px solid var(--color-border-dim);
+      overflow: hidden;
+      background: var(--color-bg-card);
+    }
+    .video-feature-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Channel link card */
+    .channel-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1.8rem 2rem;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-dim);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .channel-card:hover {
+      border-color: var(--color-gold);
+      background: var(--color-bg-card2);
+      transform: translateY(-3px);
+    }
+    .channel-card-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.4rem;
+      flex: 1;
+    }
+    .channel-card-icon {
+      color: var(--color-gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+      filter: drop-shadow(0 0 6px rgba(201,168,76,0.4));
+    }
+    .channel-card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .channel-card-tag {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+    }
+    .channel-card-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--color-text-bright);
+      line-height: 1.2;
+    }
+    .channel-card-desc {
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--color-text-dim);
+      margin-top: 4px;
+      max-width: 55ch;
+    }
+    .channel-card-cta {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 0.6em 1.4em;
+      border: 1px solid var(--color-gold-dim);
+      border-radius: var(--radius);
+      transition: border-color var(--transition), background var(--transition), color var(--transition);
+    }
+    .channel-card:hover .channel-card-cta {
+      border-color: var(--color-gold);
+      background: rgba(201,168,76,0.08);
+      color: var(--color-gold-light);
     }
   </style>
 </head>
@@ -278,10 +382,10 @@
 
         <!-- Videos panel -->
         <div class="media-panel" id="panel-videos" role="tabpanel" aria-labelledby="tab-videos">
-          <div class="video-grid">
 
-            <!-- Embedded video -->
-            <div class="video-embed-wrap">
+          <!-- Centered embed -->
+          <div class="video-feature-wrap">
+            <div class="video-feature-embed">
               <iframe
                 src="https://www.youtube.com/embed/HxYXZ98j898"
                 title="Omnæs Dæmones — Featured Track by TrippyTreebeard"
@@ -290,39 +394,24 @@
                 loading="lazy">
               </iframe>
             </div>
-
-            <!-- Channel link tiles -->
-            <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer"
-               class="video-tile" aria-label="Visit the TrippyTreebeard YouTube channel — opens in new tab">
-              <div class="video-tile-inner">
-                <div class="play-btn" aria-hidden="true">▶</div>
-                <p class="video-label">More Music &amp; Tracks</p>
-                <p class="video-coming-soon">YouTube Channel ↗</p>
-              </div>
-            </a>
-
-            <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer"
-               class="video-tile" aria-label="Visit the TrippyTreebeard YouTube channel — opens in new tab">
-              <div class="video-tile-inner">
-                <div class="play-btn" aria-hidden="true">▶</div>
-                <p class="video-label">Full Playlist</p>
-                <p class="video-coming-soon">YouTube Channel ↗</p>
-              </div>
-            </a>
-
-            <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer"
-               class="video-tile" aria-label="Visit the TrippyTreebeard YouTube channel — opens in new tab">
-              <div class="video-tile-inner">
-                <div class="play-btn" aria-hidden="true">▶</div>
-                <p class="video-label">Latest Releases</p>
-                <p class="video-coming-soon">YouTube Channel ↗</p>
-              </div>
-            </a>
-
           </div>
-          <p style="margin-top:1.5rem; font-family:var(--font-heading); font-size:0.78rem; letter-spacing:0.1em; color:var(--color-text-dim); text-align:center;">
-            All music by <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer" style="color:var(--color-gold);" aria-label="TrippyTreebeard YouTube channel — opens in new tab">TrippyTreebeard ↗</a>
-          </p>
+
+          <!-- Stylish channel link card -->
+          <a href="https://www.youtube.com/@trippytreebeard" target="_blank" rel="noopener noreferrer"
+             class="channel-card" aria-label="Visit the TrippyTreebeard YouTube channel — opens in new tab">
+            <div class="channel-card-left">
+              <div class="channel-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </div>
+              <div class="channel-card-text">
+                <span class="channel-card-tag">Soundtrack &amp; Music</span>
+                <h3 class="channel-card-name">TrippyTreebeard</h3>
+                <p class="channel-card-desc">A personal journey learning music production for game development — original lofi inspired by the sweeping, timeless world of Lord of the Rings, crafted for Omnæs Dæmones and beyond.</p>
+              </div>
+            </div>
+            <span class="channel-card-cta">Visit Channel ↗</span>
+          </a>
+
         </div>
 
         <!-- Concept Art panel -->
