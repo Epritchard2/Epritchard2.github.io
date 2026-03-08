@@ -389,6 +389,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity var(--transition), transform var(--transition);
 }
 .mobile-nav.open {
+  display: flex;
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
@@ -1099,7 +1100,7 @@ h1, h2, h3, h4, h5, h6 {
   .main-nav { display: none; }
   .header-controls { display: none; }
   .mobile-menu-btn { display: flex; }
-  .mobile-nav { display: flex; }
+  .mobile-nav.open { display: flex; }
 
   .hero-inner {
     grid-template-columns: 1fr;
